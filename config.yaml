@@ -1,0 +1,32 @@
+input:
+  generate:
+    count: 10000 # determines how many rows to generate
+    mapping: root = {"id":"", "first_name":"", "last_name":"", "account_number":0, "routing_number":0, "card_number":0} #defines the object shape
+    interval: ""
+
+pipeline:
+  processors:
+    - mapping: |
+        root.id = uuid_v4()
+        root.first_name = fake("first_name")
+        root.last_name = fake("last_name")
+        root.account_number = generate_account_number()
+        root.routing_number = generate_routing_number()
+        root.card_number = generate_card_number()
+
+output:
+  sql_insert:
+    driver: postgres
+    dsn: postgresql://evis:lY7JyhzuLDT5@ep-late-cherry-a5k4dfkr.us-east-2.aws.neon.tech:5432/syndata?sslmode=require
+    table: users
+    columns:
+      [id, first_name, last_name, account_number, routing_number, card_number]
+    args_mapping: |
+      root = [
+        this.id,
+        this.first_name,
+        this.last_name,
+        this.account_number,
+        this.routing_number,
+        this.card_number
+      ]
