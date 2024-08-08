@@ -6,7 +6,6 @@ import (
 	"math"
 	"math/rand"
 	"strconv"
-	"time"
 
 	_ "github.com/warpstreamlabs/bento/public/components/io"
 	_ "github.com/warpstreamlabs/bento/public/components/pure/extended"
@@ -31,9 +30,6 @@ func generateIntegerWithLength(length int) string {
 
 	// The highest number with 'length' digits (e.g., length 3 -> 999).
 	max := int64(math.Pow10(length) - 1)
-
-	// Seed the random number generator
-	rand.Seed(time.Now().UnixNano())
 
 	// Generate a random number in the range [min, max] and convert it to string
 	randomNum := rand.Int63n(max-min+1) + min
