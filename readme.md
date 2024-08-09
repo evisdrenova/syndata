@@ -27,3 +27,9 @@ This is the sample repo for my `fintech_devcon` 2024 talk titled `How to create 
 - pandas
 - ctgan
 - SQLAlchemy
+
+
+
+# Deck link
+
+[link](https://docs.google.com/presentation/d/1VljTYKMBZUNr7iu0j7Pu_Y16t4DoZ2ph/edit?usp=sharing&ouid=104644943787296427683&rtpof=true&sd=true)
